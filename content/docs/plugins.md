@@ -94,7 +94,7 @@ The Plugins Admin window also shows the Plugin List version and links to the Plu
 
 Actions available through the Plugins
 - **Install**: See [Install using Plugins Admin (above)](#install-using-plugins-admin) for instructions on how to install.
-    - This button is visible when you are on the **Available** tab.  
+    - This button is visible when you are on the **Available** tab.
     - Checkmark the plugin(s) you want to install, and click **Install**.
         - Notepad++ will restart after the plugin(s) are installed, and those plugins will be available.
 - **Remove**: Allows you to completely remove (uninstall) one or more plugins.
@@ -407,7 +407,7 @@ Since, for whatever reason, this file might not be present, it is a good idea to
 ## Plugin List
 
 The Plugin List is provided by a DLL that ships with Notepad++.
-It contains any plugins that have been submitted to the nppPluginList project. 
+It contains any plugins that have been submitted to the nppPluginList project.
 This list, which is maintained by the Notepad++ development team, is a separate open source project hosted on GitHub at https://github.com/notepad-plus-plus/nppPluginList/.
 Any publicly-downloadable plugin is welcome to be submitted to the list.
 
@@ -445,6 +445,20 @@ depending on your architecture.
       or if you are having difficulty finding the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> because they have moved,
       you can go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
       click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (that is, steps **B.** 4-6, above)
+3. Get a debug binary for the GUP.exe as well
+    - **A.** Build your own debug copy
+       1. Clone https://github.com/notepad-plus-plus/wingup if you haven't already
+       2. Pull the most recent copy, if you haven't already
+       3. Do a DEBUG build of the appropriate Win32 / x64 / ARM64
+    - **B.** Download an unofficial debug build
+      Unfortunately, the WinGUp project doesn't publish debug builds, even for intermediate test builds.
+      You should only use this procedure if you trust the unofficial source.
+       1. Go to an unofficial source, like https://github.com/pryrt/wingup/releases
+           - The user pryrt at GitHub is also a primary contributor to this User Manual.  Whether you then trust that user to make a build is up to you.
+**Apply**, then **OK**
+       2. Download the most recent unofficial debug build.
+           - You may have to unblock the zip or the exe it contains: visit the **Properties** context menu; if the **Unblock** option is shown, then click the checkbox and click
+    - Place the debug `GUP.exe` from **A** or **B** into your `<DebugDirectory>\updater`, overwriting the `GUP.exe` that is there.
 3. Get the JSON for nppPluginList:
     - If you have a fork of the nppPluginList repo (with a branch for making your copies), you can use the copies there.
     - If you haven't done a fork yet (you will need to in order to create a PR), you can access them from https://github.com/notepad-plus-plus/nppPluginList/tree/master/src as well.

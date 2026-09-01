@@ -445,16 +445,18 @@ depending on your architecture.
       or if you are having difficulty finding the <span style="color: green">green ✓</span> or <span style="color: red">red ✗</span> because they have moved,
       you can go to https://github.com/notepad-plus-plus/notepad-plus-plus/actions and find the most-recent commit to the `master`,
       click on that commit, then follow the instructions from the "**🏠 Summary** link" and following (that is, steps **B.** 4-6, above)
-3. Get a debug binary for the GUP.exe as well
+3. Get a debug binary for the `GUP.exe` as well
     - **A.** Build your own debug copy
        1. Clone https://github.com/notepad-plus-plus/wingup if you haven't already
        2. Pull the most recent copy, if you haven't already
        3. Do a DEBUG build of the appropriate Win32 / x64 / ARM64
-    - **B.** Download an unofficial debug build
-      Unfortunately, the WinGUp project doesn't publish debug builds, even for intermediate test builds.
-      You should only use this procedure if you trust the unofficial source.
+    - **B.** Download an unofficial debug build.
+
+       _Note_: Unfortunately, the WinGUp project doesn't publish debug builds, even for intermediate test builds.
+       You should only use this procedure if you trust the unofficial source.
+
        1. Go to an unofficial source, like https://github.com/pryrt/wingup/releases
-           - The user pryrt at GitHub is also a primary contributor to this User Manual.  Whether you then trust that user to make a build is up to you.
+           - The user `pryrt` at GitHub is also a contributor to this User Manual.  Whether you then trust that user to make a build is up to you.
 **Apply**, then **OK**
        2. Download the most recent unofficial debug build.
            - You may have to unblock the zip or the exe it contains: visit the **Properties** context menu; if the **Unblock** option is shown, then click the checkbox and click

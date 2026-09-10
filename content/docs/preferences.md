@@ -910,10 +910,5 @@ The following settings are for rather specific needs and could cause some confus
     - In the GUI, **[Settings > Preferences > General](#general) > Tab Bar > `☐ Alternate icons`** can be used to set whether you want the the alternate icons or not.
     - But by manually editing these attributes in the XML, you can also force it to use the icon set defined by the opposite mode (use the light icon set in Dark Mode, or the dark icon set in Light Mode).  Values can be `"0"` value for light icons,`"2"` for dark icons and, `"1"` is for alternate icons.
 
-- Control session network warning (new to v8.9.8)
-    - Starting in Notepad++ v8.9.8, if your active session (either `session.xml` or a manually loaded session XML) has a UNC-style path (like `\\hostname\sharename\path\file.ext`), Notepad++ will prompt you whether you want to skip that particular network path, load that path, always skip network paths, or always load network paths.  It should remember your "always" choice for this instance of Notepad++, and will save your choice to `<GUIConfig name="MISC" ... networkPathWarningMethod="#" ...>` in `config.xml`:
-        - `networkPathWarningMethod="0"`: will prompt next time
-        - `networkPathWarningMethod="1"`: will always skip loading network files from session files
-        - `networkPathWarningMethod="2"`: will always load network files from session files
-    - This option is not available through the GUI, so if you want to change your mind, you must edit `config.xml` (following the instructions for that file in [Editing Configuration Files](../config-files/#editing-configuration-files)) and change the value of this attribute.
-    - Changes to settings like that are saved to `config.xml` when Notepad++ exits (assuming your instance of Notepad++ is the one that has the permission to write to that config file), so if you launch another instance before you've exited, and that instance tries to load a UNC path from the session, you will be prompted again (because newly launched instances do not inherit changed-but-not-yet-saved configuration settings).
+- Control session network warning (new to v8.9.8):
+    - This is described more fully in the [Session Network Security](../session/#session-network-security) section

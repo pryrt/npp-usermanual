@@ -73,6 +73,25 @@ Some people want to be able to open a new instance of Notepad++ when they double
 
 Sometimes, when you load a session, you might temporarily not be able to access a certain file -- for example, if your network drive is temporarily inaccessible, or your internet connection is down so a cloud-based folder is out-of-date.  Starting in Notepad++ v8.6, there is a [**Settings > Preferences > Backup**](../preferences/#backup) option to `☐ Remember inaccessible files from past session` when you load a session (either through the menu or the default session).  With this checkmarked, if Notepad++ cannot find the files mentioned, it will ask if you want to create "placeholders": if you do, then there will be empty read-only tabs in Notepad++, and the next time you load the session, if the files are accessible again, Notepad++ will load those files again; if you choose to not create the placeholders, then those files _will be removed from the session file_, and loading that session in the future _will not_ attempt to load those inaccessible files anymore.  If you choose to let Notepad++ create a placeholder file but later close it, Notepad++ will also modify your session file when it exits, and it will no longer attempt to load those inaccessible files, because they are not in your session any more.  If you want Notepad++ to load the inaccessible files the next time you load the session, you _must_ choose to create the placeholders and _must not_ close the placeholder tabs in Notepad++.  Also, for the placeholder files, if the inaccessible file becomes available again while Notepad++ is still open, it will prompt you to reload the file (just like Notepad++ does when it notices a file has been changed by an external program) -- you will want to say **Yes** to this prompt for Notepad++ to again show the contents of the previously-inaccessible file.
 
+### Session Network Security
+
+If your active session (either `session.xml` or a manually loaded session XML) has a UNC-style path (like `\\hostname\sharename\path\file.ext`), Notepad++ will prompt you whether you want to
+- **Skip** that particular network path
+- **Always load from this server** to whitelist the server (new to v8.9.8.1)
+    - When you choose this, Notepad++ will add an entry to `serverWhiteList.xml` with an entry like `<ServerAllowed path="\\ServerName1" />`.  There is no direct GUI access to this list (it's considered a "[preference for advanced users](../preferences/#preferences-for-advanced-users)"), so if you wish to remove servers from the whitelist, you need to edit that file (per [editing config file instructions](../config-files/#editing-configuration-files)), remove that entry, save the config file, then restart Notpead++ to get it to re-read the configuration.
+    - _Note_: in v8.9.8, this option was just **Load** for a particular file, without a server whitelist
+- **Always skip network paths** if you never want to load network paths from session files
+- **Always load network paths** if you want to always load any network paths from session files
+
+It should remember your "always" choice for this instance of Notepad++, and will save your choice to `<GUIConfig name="MISC" ... networkPathWarningMethod="#" ...>` in `config.xml`:
+
+- `networkPathWarningMethod="0"`: will prompt next time
+- `networkPathWarningMethod="1"`: will always skip loading network files from session files
+- `networkPathWarningMethod="2"`: will always load network files from session files
+- Since this choice is saved to the `config.xml`, Notepad++ saves this file as the application exits (in multi-instance mode, your instance must be the one that has permission to save the configuration), so if you launch another instance before you've exited, and that instance tries to load a UNC path from the session, you will be prompted again (because newly launched instances do not inherit changed-but-not-yet-saved configuration settings).
+
+
+
 ## Folder as Workspace
 
 This feature allows you to use a tree-based interface to easily access the files in one or more filesystem directory.  When you drag a folder from Windows Explorer onto Notepad++, this feature will be activated (unless overridden by the ["... folder dropping" option](../preferences/#default-directory)).

@@ -103,7 +103,8 @@ It should remember your "always" choice for this instance of Notepad++, and will
     <NetworkPathsAlwaysAction value="?" />
     <ServerAllowed name="ServerName1" />
     <ServerAllowed name="127.0.0.1" />
-</NotepadPlus>```
+</NotepadPlus>
+```
 
 This example allows `ServerName1` and `127.0.0.1`, and will prompt for any other servers.
 
